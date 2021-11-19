@@ -1,8 +1,8 @@
-import { observable, action } from 'mobx';
+import { observable, action } from "mobx";
 
 export default class TasksStore {
   @observable tasks = [];
-  @observable filters = { status: '', search: '' };
+  @observable filters = { status: "", search: "" };
 
   constructor(tasksService) {
     this.tasksService = tasksService;
@@ -39,14 +39,14 @@ export default class TasksStore {
 
   @action
   async deleteTask(id) {
-    const idx = this.tasks.findIndex(task => task.id === id);
+    const idx = this.tasks.findIndex((task) => task.id === id);
     await this.tasksService.deleteTask(id);
     this.tasks.splice(idx, 1);
   }
 
   @action
   async updateTaskStatus(id, status) {
-    const task = this.tasks.find(task => task.id === id);
+    const task = this.tasks.find((task) => task.id === id);
     await this.tasksService.updateTaskStatus(id, status);
     task.status = status;
   }

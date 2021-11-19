@@ -1,8 +1,8 @@
-import BaseHttpService from './base-http.service';
-import queryString from 'query-string';
+import BaseHttpService from "./base-http.service";
+import queryString from "query-string";
 
 export default class TasksService extends BaseHttpService {
-  fetchTasks({ status, search}) {
+  fetchTasks({ status, search }) {
     const queryObj = {};
 
     if (status.length) {
@@ -14,7 +14,7 @@ export default class TasksService extends BaseHttpService {
     }
 
     const queryStr = queryString.stringify(queryObj);
-    return this.get('tasks' + (queryStr ? `?${queryStr}` : ''));
+    return this.get("tasks" + (queryStr ? `?${queryStr}` : ""));
   }
 
   async deleteTask(id) {
